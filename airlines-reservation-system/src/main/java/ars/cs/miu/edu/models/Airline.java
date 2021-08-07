@@ -1,16 +1,23 @@
 package ars.cs.miu.edu.models;
 
-import javax.persistence.*;
+import lombok.*;
 
+import javax.persistence.*;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(name = "Airline")
-@SecondaryTable(name = "History", )
+@SecondaryTable(name = "History")
 public class Airline {
     @Id
     @GeneratedValue
     private long id;
     private String code;
     private String name;
-    @SecondaryTable(name="History")
+    @Column(table = "History")
     private String history;
 }
