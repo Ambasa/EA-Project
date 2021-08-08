@@ -2,10 +2,7 @@ package ars.cs.miu.edu.models;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -14,9 +11,10 @@ import javax.persistence.OneToOne;
 @ToString
 @EqualsAndHashCode
 @Entity
+@Table(name="Airport")
 public class Airport {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String code;
     private String name;

@@ -12,10 +12,10 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @Entity
-
+@Table(name="Reservation")
 public class Reservation {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String reservationCode;
     private String departure;

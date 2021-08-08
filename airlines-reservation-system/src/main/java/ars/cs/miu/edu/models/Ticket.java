@@ -12,9 +12,10 @@ import java.time.LocalDate;
 @ToString
 @EqualsAndHashCode
 @Entity
+@Table(name="Ticket")
 public class Ticket {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String reservationCode;
     private LocalDate flightDate;

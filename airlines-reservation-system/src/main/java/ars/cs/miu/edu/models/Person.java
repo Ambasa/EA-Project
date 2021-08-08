@@ -7,16 +7,14 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="person_type",
-        discriminatorType = DiscriminatorType.STRING)
+@Table(name="Person")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Person {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String firstName;
     private String lastName;
@@ -28,5 +26,16 @@ public abstract class Person {
     private Role role;
     @ManyToOne
     private Address address;
-    private String person_type;
+
+    public Person(String firstName, String lastName, String emailAddress, String username, String password, LocalDate dateOfBirth, Role role, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.username = username;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.role = role;
+        this.address = address;
+    }
+    //    private String person_type;
 }

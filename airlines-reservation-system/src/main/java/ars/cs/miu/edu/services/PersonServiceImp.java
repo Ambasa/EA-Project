@@ -1,9 +1,22 @@
 package ars.cs.miu.edu.services;
 
+import ars.cs.miu.edu.models.Passenger;
+import ars.cs.miu.edu.models.Person;
+import ars.cs.miu.edu.repository.PassengerRepository;
+import ars.cs.miu.edu.repository.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonServiceImp {
+public class PersonServiceImp implements PersonService {
+    @Autowired
+    PassengerRepository passangerRepository;
+    @Autowired
+    PersonRepository personRepository;
+    @Override
+    public void createPassanger(Person p) {
+        personRepository.save(p);
+    }
 //
 //    View list of airports
 //    o View list of airlines flying out of an airport (search by airport three letter code)

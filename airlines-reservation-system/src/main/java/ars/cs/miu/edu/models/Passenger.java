@@ -3,21 +3,19 @@ package ars.cs.miu.edu.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
-@DiscriminatorValue(value = "Passenger")
+@Table(name="Passenger")
 public class Passenger extends Person{
-    @Id
-    @GeneratedValue
-    private long id;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Reservation> reservations;
-
+    public Passenger(String firstName, String lastName, String emailAddress, String username, String password, LocalDate dob, Role passenger, Address address) {
+        super(firstName,lastName,emailAddress,username,password,dob,passenger,address);
+    }
 }
