@@ -22,11 +22,7 @@ public class Application {
         PersonService personService = context.getBean(PersonService.class);
         Address address = new Address("fairfield", "IOWA" ,"USA", 52557);
         LocalDate dob = LocalDate.of(1997,02,12);
-        Person person = new Passenger("firstName", "lastName", "emailAddress", "username", "password", dob, Role.PASSENGER,  address);
-        Passenger passenger = new Passenger();
-        passenger.setFirstName("Km Hira");
-        passenger.setLastName("Kafle");
-        personService.createPassanger(passenger);
+        Person person = new Passenger("firstName1", "lastName1", "emailAddress", "mesgan", "password", dob, Role.PASSENGER,  address);
         personService.createPassanger(person);
 
     }

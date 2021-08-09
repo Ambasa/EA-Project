@@ -24,7 +24,7 @@ public abstract class Person {
     private String password;
     private LocalDate dateOfBirth;
     private Role role;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Address address;
 
     public Person(String firstName, String lastName, String emailAddress, String username, String password, LocalDate dateOfBirth, Role role, Address address) {
@@ -35,6 +35,7 @@ public abstract class Person {
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.role = role;
+
         this.address = address;
     }
     //    private String person_type;
