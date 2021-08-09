@@ -3,6 +3,8 @@ package ars.cs.miu.edu.models;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -14,17 +16,15 @@ import javax.persistence.*;
 @Table(name="Address")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
     private String street;
+    @NotNull
     private String city;
+    @NotNull
     private String state;
-    private int zip;
 
-    public Address(String street, String city, String state, int zip) {
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-    }
+    @NotNull
+    private String zip;
 }

@@ -3,6 +3,10 @@ package ars.cs.miu.edu.models;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 @Getter
@@ -12,12 +16,14 @@ import java.time.LocalDate;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name="Ticket")
 public class Ticket {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotNull
+    @Size(min=6, max=6)
     private String reservationCode;
+    @FutureOrPresent
     private LocalDate flightDate;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Flight flight;

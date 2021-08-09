@@ -4,6 +4,15 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
+import java.time.LocalDate;
+
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,12 +23,18 @@ import javax.persistence.*;
 @Table(name="Flight")
 public class Flight {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotBlank(message = "Flight number is mandatory")
+    @Size(min=20, max=20)
     private int flightNumber;
+    @Positive
     private int capacity;
-//    private LocalDate departureTime;
-//    private LocalDate arrivalTime;
+
+    @Future
+    private LocalDate departureTime;
+    @Future
+    private LocalDate arrivalTime;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Airport arrivalAirport;
