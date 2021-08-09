@@ -27,7 +27,6 @@ public class Application {
 //        LocalDate dob = LocalDate.of(1997,02,12);
 //        Person person = new Passenger("firstName1", "lastName1", "emailAddress", "mesgan", "password", dob, Role.PASSENGER,  address);
 //        personService.createPassanger(person);
-
     }
 
 }
