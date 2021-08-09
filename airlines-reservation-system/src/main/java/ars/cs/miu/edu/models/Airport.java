@@ -18,6 +18,6 @@ public class Airport {
     private long id;
     private String code;
     private String name;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Address address;
 }

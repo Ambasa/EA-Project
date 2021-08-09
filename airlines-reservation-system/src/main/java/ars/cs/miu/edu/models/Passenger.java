@@ -16,7 +16,7 @@ public class Passenger extends Person{
     @OneToMany
     @JoinColumn(name="passenger_id")
     private List<Reservation> reservations;
-    public Passenger(String firstName, String lastName, String emailAddress, String username, String password, LocalDate dob, Role passenger, Address address) {
-        super(firstName,lastName,emailAddress,username,password,dob,passenger,address);
-    }
+//    public Passenger(String firstName, String lastName, String emailAddress, String username, String password, LocalDate dob, Role passenger, Address address) {
+//        super(firstName,lastName,emailAddress,username,password,dob,passenger,address);
+//    }
 }

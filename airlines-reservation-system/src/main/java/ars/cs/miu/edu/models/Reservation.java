@@ -17,10 +17,11 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String reservationCode;
+    private String code;
     private String departure;
     private String destination;
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="reservationCode",referencedColumnName = "code")
     private List<Ticket> tickets;
     private Status status;
 
