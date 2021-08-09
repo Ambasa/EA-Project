@@ -2,16 +2,16 @@ spring:
   application:
     name: airlines-reservation-system
   datasource:
-    url: jdbc:mysql://localhost/airlinereservation
-    username: maya
-    password: maya
+    url: jdbc:mysql://localhost/airlines
+    username: root
+    password: root
     driverClassName: com.mysql.cj.jdbc.Driver
     hikari:
       maximumPoolSize: 10
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
@@ -22,4 +22,4 @@ logging:
   file:
     name: /Coding/Logging/${spring.application.name}/log
 server:
-  port: 8085
+  port: 8086
