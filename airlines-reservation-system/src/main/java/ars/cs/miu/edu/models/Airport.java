@@ -20,6 +20,7 @@ public class Airport {
     @NotNull
     @Size(min=3, max=3)
     private String code;
+    @NotNull
     @Size(min=2, max=60)
     private String name;
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})

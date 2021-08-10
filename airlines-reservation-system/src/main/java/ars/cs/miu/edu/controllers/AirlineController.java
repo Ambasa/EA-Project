@@ -12,7 +12,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
+@ControllerAdvice
 @RequestMapping("/airlines")
 public class AirlineController {
     @Autowired
@@ -39,7 +42,7 @@ public class AirlineController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Airline> updateAirline(@PathVariable long id, @RequestBody Airline airline){
+    public ResponseEntity<Airline> updateAirline(@PathVariable long id, @Valid @RequestBody Airline airline){
         Airline updatedAirline=null;
         Airline tobeUpdateAirline =airlinesService.findOne(id);
         if(tobeUpdateAirline==null){
@@ -58,7 +61,7 @@ public class AirlineController {
     }
 
     @PostMapping
-    public ResponseEntity<Airline> addAirline(@RequestBody Airline airline){
+    public ResponseEntity<Airline> addAirline(@Valid @RequestBody Airline airline){
         Airline addedAirline= airlinesService.add(airline);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()

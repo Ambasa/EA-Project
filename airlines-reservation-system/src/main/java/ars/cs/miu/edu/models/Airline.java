@@ -3,8 +3,9 @@ package ars.cs.miu.edu.models;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,10 +19,10 @@ public class Airline {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
+    @NonNull @NotEmpty 
     @Size(min=2, max=2)
     private String code;
-    @NotNull
+    @NonNull
     private String name;
     @Column(table = "History")
     @Size(min=2, max=2000)
