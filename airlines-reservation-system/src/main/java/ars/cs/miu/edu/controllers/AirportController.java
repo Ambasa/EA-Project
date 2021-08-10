@@ -1,13 +1,13 @@
 package ars.cs.miu.edu.controllers;
 
 import ars.cs.miu.edu.models.Airport;
-import ars.cs.miu.edu.services.AirlineServiceImpl;
 import ars.cs.miu.edu.services.AirportServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class AirportController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Airport> updateAirport(@PathVariable long id, @RequestBody Airport airport){
+    public ResponseEntity<Airport> updateAirport(@PathVariable long id, @RequestBody @Valid Airport airport){
         Airport updatedAirport;
         Airport tobeUpdateAirport=airportsService.findOne(id);
         if(tobeUpdateAirport==null){
@@ -60,7 +60,7 @@ public class AirportController {
     }
 
     @PostMapping
-    public ResponseEntity<Airport> addAirport(@RequestBody Airport airport){
+    public ResponseEntity<Airport> addAirport(@RequestBody @Valid Airport airport){
         Airport addedAirport= airportsService.add(airport);
 
 

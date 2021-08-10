@@ -1,14 +1,13 @@
 package ars.cs.miu.edu.controllers;
 
 import ars.cs.miu.edu.models.Flight;
-import ars.cs.miu.edu.models.Flight;
-import ars.cs.miu.edu.services.FlightServiceImpl;
 import ars.cs.miu.edu.services.FlightServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -39,11 +38,11 @@ public class FlightController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Flight> updateFlight(@PathVariable long id, @RequestBody Flight flight){
+    public ResponseEntity<Flight> updateFlight(@PathVariable long id, @RequestBody @Valid Flight flight){
         Flight updatedFlight=null;
         Flight tobeUpdateFlight =flightsService.findOne(id);
         if(tobeUpdateFlight==null){
-            updatedFlight= flightsService.update(flight);
+            updatedFlight= flightsService.add(flight);
         }else {
             flight.setId(tobeUpdateFlight.getId());
             updatedFlight= flightsService.update(flight);
@@ -58,7 +57,7 @@ public class FlightController {
     }
 
     @PostMapping
-public ResponseEntity<Flight> addFlight(@RequestBody Flight flight){
+public ResponseEntity<Flight> addFlight(@RequestBody @Valid Flight flight){
     Flight addedFlight= flightsService.add(flight);
 
 

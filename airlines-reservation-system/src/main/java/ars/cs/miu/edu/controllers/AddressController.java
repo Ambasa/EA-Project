@@ -1,14 +1,13 @@
 package ars.cs.miu.edu.controllers;
 
 import ars.cs.miu.edu.models.Address;
-import ars.cs.miu.edu.models.Address;
-import ars.cs.miu.edu.services.AddressServiceImpl;
 import ars.cs.miu.edu.services.AddressServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -39,11 +38,11 @@ public class AddressController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Address> updateAddress(@PathVariable long id, @RequestBody Address address){
+    public ResponseEntity<Address> updateAddress( @PathVariable long id, @RequestBody @Valid Address address){
         Address updatedAddress=null;
         Address tobeUpdateAddress =addresssService.findOne(id);
         if(tobeUpdateAddress==null){
-            updatedAddress= addresssService.update(address);
+            updatedAddress= addresssService.add(address);
         }else {
             address.setId(tobeUpdateAddress.getId());
             updatedAddress= addresssService.update(address);
@@ -58,7 +57,7 @@ public class AddressController {
     }
 
     @PostMapping
-    public ResponseEntity<Address> addAddress(@RequestBody Address address){
+    public ResponseEntity<Address> addAddress(@RequestBody @Valid Address address){
         Address addedAddress= addresssService.add(address);
 
 

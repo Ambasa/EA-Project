@@ -39,4 +39,9 @@ public class AirlineServiceImpl implements AirlinesService<Airline> {
     public Airline add(Airline t) {
         return  airlinesRepository.save(t);
     }
+
+    public List<Airline> findAllByAirportCode(String airportCode){
+        List<Airline> airlines = airlinesRepository.queryByAirportCode(airportCode);
+        return airlines;
+    }
 }

@@ -1,14 +1,13 @@
 package ars.cs.miu.edu.controllers;
 
 import ars.cs.miu.edu.models.Ticket;
-import ars.cs.miu.edu.models.Ticket;
-import ars.cs.miu.edu.services.TicketServiceImpl;
 import ars.cs.miu.edu.services.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -39,11 +38,11 @@ public class TicketController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Ticket> updateTicket(@PathVariable long id, @RequestBody Ticket ticket){
+    public ResponseEntity<Ticket> updateTicket(@PathVariable long id, @RequestBody @Valid Ticket ticket){
         Ticket updatedTicket=null;
         Ticket tobeUpdateTicket =ticketsService.findOne(id);
         if(tobeUpdateTicket==null){
-            updatedTicket= ticketsService.update(ticket);
+            updatedTicket= ticketsService.add(ticket);
         }else {
             ticket.setId(tobeUpdateTicket.getId());
             updatedTicket= ticketsService.update(ticket);
@@ -58,7 +57,7 @@ public class TicketController {
     }
 
     @PostMapping
-    public ResponseEntity<Ticket> addTicket(@RequestBody Ticket ticket){
+    public ResponseEntity<Ticket> addTicket(@RequestBody @Valid Ticket ticket){
         Ticket addedTicket= ticketsService.add(ticket);
 
 

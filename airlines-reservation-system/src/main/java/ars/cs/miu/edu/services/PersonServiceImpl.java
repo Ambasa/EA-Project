@@ -9,23 +9,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PersonServiceImpl  implements AirlinesService<Person> {
+public class PersonServiceImpl<T extends Person>  implements AirlinesService<T> {
     @Autowired
     private PersonRepository personsRepository;
 
     @Override
-    public List<Person> findAll() {
+    public List<T> findAll() {
         return personsRepository.findAll();
     }
 
     @Override
-    public Person findOne(Long i) {
-        return personsRepository.findById(i).orElse(null);
+    public T findOne(Long i) {
+        return (T)personsRepository.findById(i).orElse(null);
     }
 
     @Override
-    public Person update(Person t) {
-        return  personsRepository.save(t);
+    public T update(Person t) {
+        return  (T)personsRepository.save(t);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class PersonServiceImpl  implements AirlinesService<Person> {
     }
 
     @Override
-    public Person add(Person t) {
-        return  personsRepository.save(t);
+    public T add(Person t) {
+        return  (T)personsRepository.save(t);
     }
 }

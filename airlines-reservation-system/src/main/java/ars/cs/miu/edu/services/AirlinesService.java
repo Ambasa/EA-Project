@@ -9,4 +9,5 @@ public interface AirlinesService<T> {
     public T update(T t);
     public void delete (Long id);
     public T add(T t);
+
 }
